@@ -1,0 +1,119 @@
+.footer
+{
+    &__container
+    {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        position: relative;
+    }
+
+    &__img
+    {
+        width: 300px;
+        height: 300px;
+    }
+
+    &__sub-container
+    {
+        width: 100%;
+        height: fit-content;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: .75rem;
+
+        position: absolute;
+
+        &--links
+        {
+            bottom: 3.25rem; 
+        }
+        
+        &--copyright
+        {
+            bottom: .75rem;
+
+            font-size: .75rem;
+            font-family: Terminus;
+            font-weight: 300;
+            color: $color-orange;
+
+        }
+
+    }   
+
+    &__list
+    {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        gap: .75rem;
+    }
+
+    &__link
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        &:hover
+        {
+            .footer__icon
+            {
+                width: 30px;
+                height: 30px;
+            }
+
+            .footer__icon--linkedin
+            {
+                fill: #0a66c2;
+            }
+
+            .footer__icon--github
+            {
+                fill: #24292e;
+            }
+
+            .footer__icon--instagram
+            {
+                fill: url(#instagram-hover);
+            }
+        }
+    }
+
+    &__icon
+    {
+        width: 25px;
+        height: 25px;
+        pointer-events: none;
+
+        transition: .25s;
+
+        fill: $color-olive;
+    }
+
+    &__separator
+    {
+        background: $color-pine;
+        border: 0;
+        height: 1px;
+        width: 90%;
+    }
+}
+
+.content__container
+{
+    width: 100%;
+    min-height: 100vh;
+    border-bottom: 1px solid $color-pine;
+}

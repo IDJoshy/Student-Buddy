@@ -1,0 +1,70 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 1;
+}
+
+html
+{
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+div
+{
+    display: block;
+    unicode-bidi: isolate
+}
+
+body
+{
+    font-family: Inconsolata, monospace, Terminus;
+    background-color: $color-cream;
+    color: $color-default;
+}
+
+a
+{
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+span
+{
+    user-select: none;
+}
+
+@font-face {
+    font-family: Terminus;
+    src: url(../assets/fonts/Terminus.woff) format('woff'),
+         url(../assets/fonts/Terminus.ttf) format('truetype')
+         url(../assets/fonts/terminus.ttf) format("truetype");
+    
+    font-display: swap;
+}
+
+/* width */
+::-webkit-scrollbar 
+{
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track 
+{
+    background: $color-cream;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb 
+{
+    background: $color-olive;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover 
+{
+    background: darken($color-olive, 10%);
+}
