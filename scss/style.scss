@@ -4,9 +4,11 @@
 @import "../scss/base/_utilities";
 
 //Components
-@import "../scss/components/_footer";
 @import "../scss/components/_loader";
+@import "../scss/components/_login";
 @import "../scss/components/_navbar";
-
+@import "../scss/components/_hamburger";
+@import "../scss/components/_footer";
+@import "../scss/components/_calculator";
 //Layout
 @import "../scss/layout/_index";

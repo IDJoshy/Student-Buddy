@@ -31,6 +31,11 @@
 
         position: absolute;
 
+        &--art
+        {
+            top: .75rem;
+        }
+
         &--links
         {
             bottom: 3.25rem; 
@@ -44,7 +49,6 @@
             font-family: Terminus;
             font-weight: 300;
             color: $color-orange;
-
         }
 
     }   
@@ -109,11 +113,5 @@
         height: 1px;
         width: 90%;
     }
-}
 
-.content__container
-{
-    width: 100%;
-    min-height: 100vh;
-    border-bottom: 1px solid $color-pine;
 }

@@ -1,0 +1,20 @@
+//Hamburger 
+
+.hamburger
+{
+    background-color: rgba($color-olive, 0.75);
+    backdrop-filter: blur(5px);
+
+    position: fixed;
+    top: calc(($nav-height - 5px));
+    z-index: 7;
+
+    width: 100%;
+    height: calc(100vh - ($nav-height - 5px));
+
+
+    &--hidden
+    {
+        display: none;
+    }
+}
