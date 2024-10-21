@@ -73,7 +73,7 @@ window.onscroll = function()
 
 //#endregion
 
-//#region Desafio 1.
+//#region Desafio 1 y 2
 
 //Login
 const USERNAME_VALID = "admin";
@@ -103,43 +103,146 @@ document.getElementById("login-form").addEventListener("submit", function(event)
     }
 });
 
-//Calculator
+//Calculadora
 
+const CALCULATOR_TOOL = document.getElementById("calculator-tool");
+const CALCULATOR_DRAG = document.getElementById("calculator-tool-draggable");
 const CALCULATOR_BUTTONS = document.querySelectorAll(".calculator__button");
 const CALCULATOR_DISPLAY = document.getElementById("calculator-display");
+
+const CALCULATOR_TOOL_PANELS = document.getElementsByClassName("calculator__section");
+const CALCULATOR_PANEL_CHANGER = document.getElementById("calculator-panel-changer");
+const CALCULATOR_ICONS = document.getElementsByClassName("calculator__img");
+
+//Array del historial de resultados
+let calculatorHistory = [];
 
 //Variables
 let currentInput = '';
 let result = '';
 
 //ciclo "forEach()" por cada boton
-CALCULATOR_BUTTONS.forEach(button => {
-  button.addEventListener('click', () => {
-    const value = button.textContent;
+CALCULATOR_BUTTONS.forEach(button => 
+{
+  button.addEventListener('click', () => 
+  {
+    const VALUE = button.textContent;
 
-    if (value === 'C') {
+    if (VALUE === 'C') {
       // Borrar
       currentInput = '';
       CALCULATOR_DISPLAY.value = '';
 
-    } else if (value === '=') {
+    } else if (VALUE === '=') {
       // Un try catch
       try {
-        result = eval(currentInput);
-        CALCULATOR_DISPLAY.value = result;
-        currentInput = result; 
 
+        // Evaluar
+        result = eval(currentInput);
+
+        // Guardar historial
+        CalculatorHistory(currentInput);
+
+        // Mostrar resultado
+
+        CALCULATOR_DISPLAY.value = result;
+        currentInput = result;
+        
       } catch {
         CALCULATOR_DISPLAY.value = 'Error';
         currentInput = '';
       }
 
     } else {
-      // Mostrar valor
-      currentInput += value;
+      // Mostrar valor + Nuevo input
+      currentInput += VALUE;
       CALCULATOR_DISPLAY.value = currentInput;
     }
+  });
 });
+
+//Objeto (Guardar resultados calculadora)
+
+function CalculatorResult(result)
+{
+  this.result = result;
+  this.eval = function() { return eval(this.result); }
+}
+
+//Añadir historial
+
+function CalculatorHistory(currentInput)
+{
+  calculatorHistory.push(new CalculatorResult(currentInput));
+  console.log("Se ha añadido un nuevo calculo al historial => " + $(currentInput).text());
+}
+
+//Drag
+
+let isCalcDrag = false;
+let calcOffsetX, calcOffsetY;
+
+CALCULATOR_DRAG.addEventListener('mousedown', (e) => {
+  isCalcDrag = true;
+  calcOffsetX = e.clientX - CALCULATOR_TOOL.offsetLeft;
+  calcOffsetY = e.clientY - CALCULATOR_TOOL.offsetTop;
+  CALCULATOR_DRAG.style.cursor = 'grabbing';
+});
+
+CALCULATOR_DRAG.addEventListener('mouseup', () =>
+{
+  isCalcDrag = false;
+  CALCULATOR_DRAG.style.cursor = 'move';
+});
+  
+document.addEventListener('mousemove', (e) => {
+
+  if (isCalcDrag) 
+    {
+      let newX = e.clientX - calcOffsetX;
+      let newY = e.clientY - calcOffsetY;
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      if (newX < 0) {
+          newX = 0;
+      } else if (newX + CALCULATOR_TOOL.offsetWidth > viewportWidth) {
+          newX = viewportWidth - CALCULATOR_TOOL.offsetWidth;
+      }
+
+      if (newY < 0) {
+          newY = 0;
+      } else if (newY + CALCULATOR_TOOL.offsetHeight > viewportHeight) {
+          newY = viewportHeight - CALCULATOR_TOOL.offsetHeight;
+      }
+
+      CALCULATOR_TOOL.style.left = `${newX}px`;
+      CALCULATOR_TOOL.style.top = `${newY}px`;
+    }
+});
+
+//Change Panel
+
+let calculatorPanelIndex = 0;
+
+CALCULATOR_PANEL_CHANGER.addEventListener("click", () =>
+{
+  if (calculatorPanelIndex === 0)
+  {
+    CALCULATOR_TOOL_PANELS[calculatorPanelIndex].classList.add("calculator__section--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__img--hidden");
+    CALCULATOR_TOOL_PANELS[calculatorPanelIndex + 1].classList.remove("calculator__section--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex + 1].classList.remove("calculator__img--hidden");
+    calculatorPanelIndex ++;
+
+  }else if (calculatorPanelIndex === 1)
+  {
+    CALCULATOR_TOOL_PANELS[calculatorPanelIndex - 1].classList.remove("calculator__section--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex - 1].classList.remove("calculator__img--hidden");
+    CALCULATOR_TOOL_PANELS[calculatorPanelIndex].classList.add("calculator__section--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__img--hidden");
+    calculatorPanelIndex --;
+  }
 });
 
 //#endregion

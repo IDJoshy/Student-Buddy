@@ -98,39 +98,55 @@
 
     <section id="main-panel" class="main">
 
-        <div class="calculator">
+    </section>
 
-            <div class="calculator__container">
+    <!-- Tools -->
+    <div id="calculator-tool" class="calculator">
 
-                <input type="text" class="calculator__display" id="calculator-display" disabled>
+        <div id="calculator-tool-draggable" class="calculator__draggable"> 
+            <img class="calculator__draggable-img" src="./assets/image/button/dragger.png" alt="Draggable Button">
+        </div>
 
-                <div class="calculator__buttons">
+        <div class="calculator__section calculator__section--calc">
 
-                    <button class="calculator__button">7</button>
-                    <button class="calculator__button">8</button>
-                    <button class="calculator__button">9</button>
-                    <button class="calculator__button">/</button>
-                    <button class="calculator__button">4</button>
-                    <button class="calculator__button">5</button>
-                    <button class="calculator__button">6</button>
-                    <button class="calculator__button">*</button>
-                    <button class="calculator__button">1</button>
-                    <button class="calculator__button">2</button>
-                    <button class="calculator__button">3</button>
-                    <button class="calculator__button">-</button>
-                    <button class="calculator__button">0</button>
-                    <button class="calculator__button">.</button>
-                    <button class="calculator__button">=</button>
-                    <button class="calculator__button">+</button>
-                    <button class="calculator__button">C</button>
+            <input type="text" class="calculator__display" id="calculator-display" disabled>
 
-                </div>
+            <div class="calculator__buttons">
+
+                <button class="calculator__button">7</button>
+                <button class="calculator__button">8</button>
+                <button class="calculator__button">9</button>
+                <button class="calculator__button">/</button>
+                <button class="calculator__button">4</button>
+                <button class="calculator__button">5</button>
+                <button class="calculator__button">6</button>
+                <button class="calculator__button">*</button>
+                <button class="calculator__button">1</button>
+                <button class="calculator__button">2</button>
+                <button class="calculator__button">3</button>
+                <button class="calculator__button">-</button>
+                <button class="calculator__button">0</button>
+                <button class="calculator__button">.</button>
+                <button class="calculator__button">=</button>
+                <button class="calculator__button">+</button>
+                <button class="calculator__button">C</button>
+    
             </div>
 
         </div>
 
-    </section>
+        <div class="calculator__section calculator__section--hist calculator__section--hidden">
 
+        </div>
+
+        <button id="calculator-panel-changer" class="calculator__changer">
+            <img class="calculator__img" src="./assets/image/button/hist.png" alt="Calculator History Button">
+            <img class="calculator__img calculator__img--hidden" src="./assets/image/button/calc.png" alt="Calculator Go-Back From History Button">
+        </button>
+
+    </div>
+
+    <!-- Footer -->
     <footer class="footer">
 
         <div class="footer__container">
