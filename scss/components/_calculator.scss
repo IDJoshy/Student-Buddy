@@ -30,7 +30,7 @@
         width: 250px;
         height: 350px;
 
-        background-color: $color-olive;
+        background-color: rgba($color-olive, 0.75);
         padding: 20px;
         border-radius: 0 0 10px 10px;
 
@@ -46,7 +46,7 @@
         &--hist
         {
             justify-content: start;
-            gap: 5px;
+            gap: 2px;
         }
 
         &--hidden
@@ -162,6 +162,7 @@
     &__history-text
     {
         color: $color-cream;
+        text-align: center;
 
         &--result
         {
@@ -171,7 +172,7 @@
         &--date
         {
             font-size: .75em;
-            text-align: left;
+            text-align: center;
         }
     }
 }

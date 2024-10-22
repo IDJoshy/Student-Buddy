@@ -180,26 +180,39 @@ function AddCalculatorHistory(currentInput)
     calculatorHistory.shift();
     console.log("Limite del historial alcanzado, eliminado el calculo mas antiguo");
   }
-  
-  UpdateCalculatorHistory();
+
 }
 
 //Actualizar historial
 function UpdateCalculatorHistory()
 {
   CALCULATOR_TOOL_PANELS[1].innerHTML = '';
-  calculatorHistory.forEach(result =>
+
+  if(calculatorHistory.length === 0)
   {
     const NEW_DIV = document.createElement('div');
-    NEW_DIV.className = 'calculator__history-item'
+    NEW_DIV.className = 'calculator__history-item';
     NEW_DIV.innerHTML = 
-    ` 
-    <p class="calculator__history-text calculator__history-text--result">${result.input} = ${result.eval}</p>
-    <p class="calculator__history-text calculator__history-text--date">${result.date}</p>
+    `
+    <p class="calculator__history-text calculator__history-text--result"> NO DATA </p>
     `;
     CALCULATOR_TOOL_PANELS[1].appendChild(NEW_DIV);
-  });
-
+  }
+  else
+  {
+    calculatorHistory.forEach(result =>
+    {
+      const NEW_DIV = document.createElement('div');
+      NEW_DIV.className = 'calculator__history-item'
+      NEW_DIV.innerHTML = 
+      ` 
+      <p class="calculator__history-text calculator__history-text--result">${result.input} = ${result.eval}</p>
+      <p class="calculator__history-text calculator__history-text--date">${result.date}</p>
+      `;
+      CALCULATOR_TOOL_PANELS[1].appendChild(NEW_DIV);
+    });
+  }
+  
 }
 
 //Drag
@@ -260,7 +273,10 @@ CALCULATOR_PANEL_CHANGER.addEventListener("click", () =>
     CALCULATOR_ICONS[calculatorPanelIndex + 1].classList.remove("calculator__img--hidden");
     calculatorPanelIndex ++;
 
-  }else if (calculatorPanelIndex === 1)
+    UpdateCalculatorHistory();
+
+  }
+  else if (calculatorPanelIndex === 1)
   {
     CALCULATOR_TOOL_PANELS[calculatorPanelIndex - 1].classList.remove("calculator__section--hidden");
     CALCULATOR_ICONS[calculatorPanelIndex - 1].classList.remove("calculator__img--hidden");

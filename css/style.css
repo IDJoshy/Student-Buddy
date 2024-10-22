@@ -360,7 +360,7 @@ span {
 .calculator__section {
   width: 250px;
   height: 350px;
-  background-color: #344E41;
+  background-color: rgba(52, 78, 65, 0.75);
   padding: 20px;
   border-radius: 0 0 10px 10px;
   display: flex;
@@ -372,7 +372,7 @@ span {
 }
 .calculator__section--hist {
   justify-content: start;
-  gap: 5px;
+  gap: 2px;
 }
 .calculator__section--hidden {
   display: none;
@@ -457,13 +457,14 @@ span {
 }
 .calculator__history-text {
   color: rgb(254, 250, 224);
+  text-align: center;
 }
 .calculator__history-text--result {
   font-size: 1em;
 }
 .calculator__history-text--date {
   font-size: 0.75em;
-  text-align: left;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
