@@ -363,12 +363,16 @@ span {
   background-color: #344E41;
   padding: 20px;
   border-radius: 0 0 10px 10px;
-}
-.calculator__section--calc {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+.calculator__section--calc {
+  justify-content: center;
+}
+.calculator__section--hist {
+  justify-content: start;
+  gap: 5px;
 }
 .calculator__section--hidden {
   display: none;
@@ -439,6 +443,27 @@ span {
 }
 .calculator__img--hidden {
   display: none;
+}
+.calculator__history-item {
+  width: 210px;
+  height: 50px;
+  background-color: #3e5d4e;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.calculator__history-text {
+  color: rgb(254, 250, 224);
+}
+.calculator__history-text--result {
+  font-size: 1em;
+}
+.calculator__history-text--date {
+  font-size: 0.75em;
+  text-align: left;
 }
 
 /*# sourceMappingURL=style.css.map */

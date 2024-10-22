@@ -141,7 +141,7 @@ CALCULATOR_BUTTONS.forEach(button =>
         result = eval(currentInput);
 
         // Guardar historial
-        CalculatorHistory(currentInput);
+        AddCalculatorHistory(currentInput);
 
         // Mostrar resultado
 
@@ -162,19 +162,44 @@ CALCULATOR_BUTTONS.forEach(button =>
 });
 
 //Objeto (Guardar resultados calculadora)
-
-function CalculatorResult(result)
+function CalculatorResult(currentInput)
 {
-  this.result = result;
-  this.eval = function() { return eval(this.result); }
+  this.input = currentInput;
+  this.date = new Date().toLocaleString();
+  this.eval = eval(currentInput);
 }
 
 //Añadir historial
-
-function CalculatorHistory(currentInput)
+function AddCalculatorHistory(currentInput)
 {
   calculatorHistory.push(new CalculatorResult(currentInput));
-  console.log("Se ha añadido un nuevo calculo al historial => " + $(currentInput).text());
+  console.log("Añadido el calculo al historial");
+
+  if (calculatorHistory.length > 5) //Limitar historial a 5 calculos
+  {
+    calculatorHistory.shift();
+    console.log("Limite del historial alcanzado, eliminado el calculo mas antiguo");
+  }
+  
+  UpdateCalculatorHistory();
+}
+
+//Actualizar historial
+function UpdateCalculatorHistory()
+{
+  CALCULATOR_TOOL_PANELS[1].innerHTML = '';
+  calculatorHistory.forEach(result =>
+  {
+    const NEW_DIV = document.createElement('div');
+    NEW_DIV.className = 'calculator__history-item'
+    NEW_DIV.innerHTML = 
+    ` 
+    <p class="calculator__history-text calculator__history-text--result">${result.input} = ${result.eval}</p>
+    <p class="calculator__history-text calculator__history-text--date">${result.date}</p>
+    `;
+    CALCULATOR_TOOL_PANELS[1].appendChild(NEW_DIV);
+  });
+
 }
 
 //Drag
