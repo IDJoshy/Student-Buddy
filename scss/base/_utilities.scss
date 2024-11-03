@@ -1,0 +1,63 @@
+@mixin display-flex($direction, $justify, $align)
+{
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin display-grid($direction, $justify, $align)
+{
+    display: grid;
+    grid-template-columns: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+.display
+{
+    &-flex
+    {
+        &--row
+        {
+            @include display-flex(row, center, center);
+        }
+
+        &--column
+        {
+            @include display-flex(column, center, center);
+        }
+
+        &--centered
+        {
+            @include display-flex(unset, center, center);
+        }
+
+    }    
+}
+
+.container
+{
+    width: fit-content;
+    height: 100%;
+
+    &--flex-100vh
+    {
+        width: 100%;
+        min-height: 100vh;
+        @include display-flex(column, center, center);
+    }
+
+}
+
+@keyframes fadeIn
+{
+    0%
+    {
+        opacity: 0;
+    }
+    100%
+    {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,39 @@
+.toolbar
+{
+    &__button
+    {
+        width: 30px;
+        height: 30px;
+        border: 1px solid $color-olive;
+        border-radius: 2.5px;
+        background-color: $color-cream;
+        cursor: pointer;
+        transition: .25s ease-in-out;
+
+        &--calculator
+        {
+            
+        }
+
+        &:hover
+        {
+            background-color: $color-olive;
+
+            width: 32px;
+            height: 32px;
+
+            .toolbar__icon
+            {
+                filter: invert(1);
+            }
+        }
+
+    }
+
+    &__icon
+    {
+        width: 20px;
+        height: 20px;
+        user-select: none;
+    }
+}

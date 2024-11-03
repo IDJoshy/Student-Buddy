@@ -25,85 +25,144 @@ function loader_images_animation() {
 
 setInterval(loader_images_animation, LOADER_IMG_INTERVAL);
 
+window.scrollTo(0, 0);
+
 //#endregion
 
-//#region Navbar 
+//#region Menus
+
+const MENU_PANEL = document.getElementById("menu-panel");
 
 const NAVBAR_MENU = document.getElementById("navbar-menu");
 const HAMBURGER_MENU = document.getElementById("hamburger-menu");
+const TOOLBAR_MENU = document.getElementById("toolbar-menu");
 
-const HAMBURGER_BUTTON_IMG = document.querySelectorAll('.navbar__hamburger-icon');
+const HAMBURGER_BUTTON_IMG = document.querySelectorAll('.navbar__icon--hamburger');
+
+const NAVBAR_PULLER = document.getElementById("navbar-puller");
+
 let isHamburgerHidden = new Boolean(true);
+let isNavbarHidden = new Boolean(false);
+let isNavbarMoving = new Boolean(false);
 
-function HamburgerMenu()
+function NavbarMenu(dir)
 {
-  if (isHamburgerHidden) 
+  switch(dir)
   {
-    isHamburgerHidden = false;
-    HAMBURGER_MENU.classList.remove("hamburger--hidden");
-    HAMBURGER_BUTTON_IMG[0].classList.add("navbar__hamburger-icon--hidden");
-    HAMBURGER_BUTTON_IMG[1].classList.remove("navbar__hamburger-icon--hidden");
+    case "down":
+      MENU_PANEL.style.top = "0";
+      NAVBAR_PULLER.innerHTML = "↑";
+      break;
 
-  } else {
-    isHamburgerHidden = true;
-    HAMBURGER_MENU.classList.add("hamburger--hidden");
-    HAMBURGER_BUTTON_IMG[0].classList.remove("navbar__hamburger-icon--hidden");
-    HAMBURGER_BUTTON_IMG[1].classList.add("navbar__hamburger-icon--hidden");
+    case "up":
+      MENU_PANEL.style.top = "-85px";
+      NAVBAR_PULLER.innerHTML = "↓";
+      break;
   }
 }
 
-//Hide On Scroll
-let prevScrollPos = window.scrollY;
+function NavbarPuller()
+{
+  NavbarMenu(isNavbarHidden ? "down" : "up");
+}
+
 window.onscroll = function() 
 {
   let currentScrollPos = window.scrollY;
   
   if (isHamburgerHidden)
   {
-    if (prevScrollPos > currentScrollPos) 
+    if(currentScrollPos > 85)
     {
-      NAVBAR_MENU.style.top = "0";
-    } else {
-      NAVBAR_MENU.style.top = "-7.5rem";      
+      NavbarMenu("up");
+    }
+    else if(currentScrollPos < 5)
+    {
+      NavbarMenu("down");
     }
   }
 
-  prevScrollPos = currentScrollPos;
+}
+
+MENU_PANEL.addEventListener("transitionend", () => {
+
+  if (MENU_PANEL.style.top >= "0")
+  {
+    isNavbarHidden = false;
+  }
+  else if (MENU_PANEL.style.top === "-85px")
+  {
+    isNavbarHidden = true;
+  }
+
+});
+
+function HamburgerMenu()
+{
+  if (isHamburgerHidden) 
+  {
+    isHamburgerHidden = false;
+    HAMBURGER_MENU.classList.remove("navbar--hidden");
+    TOOLBAR_MENU.classList.add("navbar--hidden");
+    HAMBURGER_BUTTON_IMG[0].classList.add("navbar--hidden");
+    HAMBURGER_BUTTON_IMG[1].classList.remove("navbar--hidden");
+
+  } else {
+    isHamburgerHidden = true;
+    HAMBURGER_MENU.classList.add("navbar--hidden");
+    TOOLBAR_MENU.classList.remove("navbar--hidden");
+    HAMBURGER_BUTTON_IMG[0].classList.remove("navbar--hidden");
+    HAMBURGER_BUTTON_IMG[1].classList.add("navbar--hidden");
+  }
 }
 
 //#endregion
 
-//#region Desafio 1 y 2
+//#region Modes
 
-//Login
-const USERNAME_VALID = "admin";
-const PASSWORD_VALID = "12345";
+let currentMode, previousMode, indexMode = 0;
 
-const LOGIN_PANEL = document.getElementById("login-panel");
-const MENU_PANEL = document.getElementById("menu-panel");
-const MAIN_PANEL = document.getElementById("main-panel");
+const MODE_HEADER = document.getElementById("mode-header");
+const MODE_MESSAGE = document.getElementById("mode-message");
 
-MENU_PANEL.style.display = "none";
-MAIN_PANEL.style.display = "none";
+let modes = [
+  {
+    index : "0",
+    title : "Notepad Mode",
+    message : ["Write Your <br> Thoughts !", "Your notes are...", "Your thoughts are..."], 
+    html: `
 
-document.getElementById("login-form").addEventListener("submit", function(event) 
-{
-  event.preventDefault();
-  const username = document.getElementById("login-username").value;
-  const password = document.getElementById("login-password").value;
 
-  if (username === USERNAME_VALID && password === PASSWORD_VALID) 
-    { 
-      LOGIN_PANEL.style.display = "none";      
-      MAIN_PANEL.style.display = "block";
-      MENU_PANEL.style.display = "block";
 
-    } else {
-      alert("Error: Invalid access credentials.");
-    }
-});
+    `
+  },
+  {
+    index : "1",
+    title : "TODO List Mode",
+    message : ["Your Grades are <br> a secret.", "Prepare for the <br> best (worst).", "Need Help?"], 
+    html: `
 
-//Calculadora
+
+
+    `
+  },
+  {
+    index : "2",
+    title : "Grade Calculator Mode",
+    message : ["Your Grades are <br> a secret.", "Prepare for the <br> best (worst).", "Need Help?"], 
+    html: `
+
+
+
+    `
+  }
+]
+
+//#endregion
+
+//#region Tools
+
+// Calculadora
 
 const CALCULATOR_TOOL = document.getElementById("calculator-tool");
 const CALCULATOR_DRAG = document.getElementById("calculator-tool-draggable");
@@ -112,7 +171,7 @@ const CALCULATOR_DISPLAY = document.getElementById("calculator-display");
 
 const CALCULATOR_TOOL_PANELS = document.getElementsByClassName("calculator__section");
 const CALCULATOR_PANEL_CHANGER = document.getElementById("calculator-panel-changer");
-const CALCULATOR_ICONS = document.getElementsByClassName("calculator__img");
+const CALCULATOR_ICONS = document.getElementsByClassName("calculator__icon");
 
 //Array del historial de resultados
 let calculatorHistory = [];
@@ -121,7 +180,7 @@ let calculatorHistory = [];
 let currentInput = '';
 let result = '';
 
-//ciclo "forEach()" por cada boton
+//Ciclo "forEach()" por cada boton
 CALCULATOR_BUTTONS.forEach(button => 
 {
   button.addEventListener('click', () => 
@@ -135,20 +194,20 @@ CALCULATOR_BUTTONS.forEach(button =>
 
     } else if (VALUE === '=') {
       // Un try catch
-      try {
-
+      try 
+      {
         // Evaluar
         result = eval(currentInput);
-
-        // Guardar historial
+        
         AddCalculatorHistory(currentInput);
 
         // Mostrar resultado
-
         CALCULATOR_DISPLAY.value = result;
         currentInput = result;
         
-      } catch {
+      } 
+      catch 
+      {
         CALCULATOR_DISPLAY.value = 'Error';
         currentInput = '';
       }
@@ -170,9 +229,11 @@ function CalculatorResult(currentInput)
 }
 
 //Añadir historial
-function AddCalculatorHistory(currentInput)
+function AddCalculatorHistory(input)
 {
-  calculatorHistory.push(new CalculatorResult(currentInput));
+  if (input === '' || input === undefined) return;
+
+  calculatorHistory.push(new CalculatorResult(input));
   console.log("Añadido el calculo al historial");
 
   if (calculatorHistory.length > 5) //Limitar historial a 5 calculos
@@ -212,54 +273,89 @@ function UpdateCalculatorHistory()
       CALCULATOR_TOOL_PANELS[1].appendChild(NEW_DIV);
     });
   }
+
+}
+
+//Mover Calculadora
+
+let calcOffsetX, calcOffsetY, isCalcDrag = false;
+
+CALCULATOR_DRAG.addEventListener("mousedown", CalculatorDragStart);
+CALCULATOR_DRAG.addEventListener("touchstart", CalculatorDragStart);
+CALCULATOR_DRAG.addEventListener("mouseup", CalculatorDragStop);
+CALCULATOR_DRAG.addEventListener("touchend", CalculatorDragStop);
+
+function CalculatorDragStart(e)
+{
+  isCalcDrag = true;
+
+  if(e.type === 'mousedown')
+  {
+    calcOffsetX = e.clientX - CALCULATOR_TOOL.offsetLeft;
+    calcOffsetY = e.clientY - CALCULATOR_TOOL.offsetTop;
+  
+    CALCULATOR_DRAG.style.cursor = 'grabbing';
+  }
+  else if(e.type === 'touchstart')
+  {
+    calcOffsetX = e.touches[0].clientX - CALCULATOR_TOOL.offsetLeft;
+    calcOffsetY = e.touches[0].clientY - CALCULATOR_TOOL.offsetTop;
+  }
+}
+
+function CalculatorDrag(newX, newY)
+{
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  
+  if (newX < 0) {
+      newX = 0;
+  } else if (newX + CALCULATOR_TOOL.offsetWidth > viewportWidth) {
+      newX = viewportWidth - CALCULATOR_TOOL.offsetWidth;
+  }
+
+  if (newY < 40) {
+      newY = 40;
+  } else if (newY + CALCULATOR_TOOL.offsetHeight > viewportHeight) {
+      newY = viewportHeight - CALCULATOR_TOOL.offsetHeight;
+  }
+
+  CALCULATOR_TOOL.style.left = `${newX}px`;
+  CALCULATOR_TOOL.style.top = `${newY}px`;
   
 }
 
-//Drag
-
-let isCalcDrag = false;
-let calcOffsetX, calcOffsetY;
-
-CALCULATOR_DRAG.addEventListener('mousedown', (e) => {
-  isCalcDrag = true;
-  calcOffsetX = e.clientX - CALCULATOR_TOOL.offsetLeft;
-  calcOffsetY = e.clientY - CALCULATOR_TOOL.offsetTop;
-  CALCULATOR_DRAG.style.cursor = 'grabbing';
-});
-
-CALCULATOR_DRAG.addEventListener('mouseup', () =>
+function CalculatorDragStop()
 {
   isCalcDrag = false;
   CALCULATOR_DRAG.style.cursor = 'move';
-});
-  
+}
+
 document.addEventListener('mousemove', (e) => {
 
   if (isCalcDrag) 
     {
       let newX = e.clientX - calcOffsetX;
       let newY = e.clientY - calcOffsetY;
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
 
-      if (newX < 0) {
-          newX = 0;
-      } else if (newX + CALCULATOR_TOOL.offsetWidth > viewportWidth) {
-          newX = viewportWidth - CALCULATOR_TOOL.offsetWidth;
-      }
-
-      if (newY < 0) {
-          newY = 0;
-      } else if (newY + CALCULATOR_TOOL.offsetHeight > viewportHeight) {
-          newY = viewportHeight - CALCULATOR_TOOL.offsetHeight;
-      }
-
-      CALCULATOR_TOOL.style.left = `${newX}px`;
-      CALCULATOR_TOOL.style.top = `${newY}px`;
+      CalculatorDrag(newX, newY);
     }
+
 });
 
-//Change Panel
+document.addEventListener('touchmove', (e) => {
+
+  if (isCalcDrag) 
+    {
+      let newX = e.touches[0].clientX - calcOffsetX;
+      let newY = e.touches[0].clientY - calcOffsetY;
+
+      CalculatorDrag(newX, newY);
+    }
+
+});
+
+//Ver historial
 
 let calculatorPanelIndex = 0;
 
@@ -268,9 +364,9 @@ CALCULATOR_PANEL_CHANGER.addEventListener("click", () =>
   if (calculatorPanelIndex === 0)
   {
     CALCULATOR_TOOL_PANELS[calculatorPanelIndex].classList.add("calculator__section--hidden");
-    CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__img--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__icon--hidden");
     CALCULATOR_TOOL_PANELS[calculatorPanelIndex + 1].classList.remove("calculator__section--hidden");
-    CALCULATOR_ICONS[calculatorPanelIndex + 1].classList.remove("calculator__img--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex + 1].classList.remove("calculator__icon--hidden");
     calculatorPanelIndex ++;
 
     UpdateCalculatorHistory();
@@ -279,11 +375,36 @@ CALCULATOR_PANEL_CHANGER.addEventListener("click", () =>
   else if (calculatorPanelIndex === 1)
   {
     CALCULATOR_TOOL_PANELS[calculatorPanelIndex - 1].classList.remove("calculator__section--hidden");
-    CALCULATOR_ICONS[calculatorPanelIndex - 1].classList.remove("calculator__img--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex - 1].classList.remove("calculator__icon--hidden");
     CALCULATOR_TOOL_PANELS[calculatorPanelIndex].classList.add("calculator__section--hidden");
-    CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__img--hidden");
+    CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__icon--hidden");
     calculatorPanelIndex --;
   }
 });
 
 //#endregion
+
+let isCalcHidden = new Boolean(true);
+CALCULATOR_TOOL.style.display = "none";
+
+function RenderTool(type)
+{
+  switch(type)
+  {
+    case "calculator":
+
+    if(isCalcHidden)
+    {
+      CALCULATOR_TOOL.style.display = "unset";
+      isCalcHidden = false;
+    }
+    else
+    {
+      CALCULATOR_TOOL.style.display = "none";
+      isCalcHidden = true;
+    }
+
+    break;
+  }
+}
+

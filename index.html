@@ -34,7 +34,7 @@
 
     </section>
 
-    <section id="login-panel" class="login">
+    <!-- <section id="login-panel" class="login">
 
         <div class="login__container">
 
@@ -58,55 +58,94 @@
 
         </div>
 
-    </section>
+    </section> -->
 
-    <section id="menu-panel" class="menu">
+    <section id="menu-panel" class="navbar">
 
-        <section id="navbar-menu" class="navbar">
+        <div id="navbar-menu">
 
-            <div class="navbar__container navbar__container--upper">
-    
-                <strong class="navbar__text navbar__text--version"> 01001010 VER 0.1 </strong>
+            <div class="navbar__container navbar__container--current">
+
+                <div class="navbar__container--current-text">
+                    <strong class="navbar__text navbar__text--version"> 01001010 VER 0.1 </strong>
+                    <span> | </span>
+                    <strong id="mode-header" class="navbar__text navbar__text--mode"> --- Mode </strong>
+                </div>
     
                 <hr class="navbar__separator">
     
-                <sup class="navbar__text navbar__text--sup"> &#x21AA; Notepad Mode </sup>
-    
             </div>
     
-            <div class="navbar__container navbar__container--middle">
+            <div class="navbar__container navbar__container--navbar">
     
-                <h1 class="navbar__text navbar__text--name">Write Your <br> Thoughts !</h1>
+                <h1 id="mode-message" class="navbar__text navbar__text--message">Write Your <br> Thoughts !</h1>
     
                 <button class="navbar__button navbar__button--hamburger" type="button" name="navbar-hamburger" tabindex="0" onclick="HamburgerMenu()";>
+                    
+                    <svg class="navbar__icon navbar__icon--hamburger" width="30px" height="30px" viewBox="0 0 30 30">
+                        <g>
+                            <rect height="5" width="30" x="0" y="22.5"/>
+                            <rect height="5" width="30" x="0" y="12.5"/>
+                            <rect height="5" width="30" x="0" y="2.5"/>
+                        </g>
+                    </svg>
     
-                    <img class="navbar__hamburger-icon" src="./assets/image/button/hamburger.png" alt="Hamburger Icon">
-                    <img class="navbar__hamburger-icon navbar__hamburger-icon--hidden" src="./assets/image/button/rose_button.gif" alt="Hamburger Icon">
-        
+                    <svg class="navbar__icon navbar__icon--hamburger navbar--hidden" width="30px" height="30px" viewBox="0 0 460.775 460.775">
+                        <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55  c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55  c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505  c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55  l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719  c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"/>
+                    </svg>
+    
                 </button>
     
             </div>
     
-        </section>
-        
-        <section id="hamburger-menu" class="hamburger hamburger--hidden">
-            
-    
-        </section>
+        </div>
 
+        <div id="toolbar-menu">
+            <hr class="navbar__separator">
+            <div class="navbar__container navbar__container--toolbar">
+                
+                <button class="toolbar__button toolbar__button--calculator display-flex--centered" onclick="RenderTool('calculator')">
+                    <img class="toolbar__icon" src="./assets/image/button/calc.png" alt="Toolbar Calculator">
+                </button>
+                <span> | </span>
+                
+            </div>
+            <hr class="navbar__separator">
+        </div> 
+
+        <div id="hamburger-menu" class="navbar--hidden">
+
+            <div class="navbar__container navbar__container--hamburger">
+                <hr class="navbar__separator">
+            </div>
+    
+        </div>
+        
+        <button id="navbar-puller" class="navbar__button navbar__button--puller" onclick="NavbarPuller()">
+            ↑
+        </button>
+    
     </section>
 
-    <section id="main-panel" class="main">
+    <!-- Content Panel -->
+    <section id="main-panel" class="main display-flex--column">
+
+        <div id="grade-calculator" class="container container--flex-100vh grades">
+
+            
+
+        </div>
 
     </section>
 
     <!-- Tools -->
+
     <div id="calculator-tool" class="calculator">
 
         <div id="calculator-tool-draggable" class="calculator__draggable"> 
-            <img class="calculator__draggable-img" src="./assets/image/button/dragger.png" alt="Draggable Button">
+            <img class="calculator__image" src="./assets/image/button/dragger.png" alt="Draggable Button">
         </div>
-
+        
         <div class="calculator__section calculator__section--calc">
 
             <input type="text" class="calculator__display" id="calculator-display" disabled>
@@ -140,31 +179,31 @@
         </div>
 
         <button id="calculator-panel-changer" class="calculator__changer">
-            <img class="calculator__img" src="./assets/image/button/hist.png" alt="Calculator History Button">
-            <img class="calculator__img calculator__img--hidden" src="./assets/image/button/calc.png" alt="Calculator Go-Back From History Button">
+            <img class="calculator__icon" src="./assets/image/button/hist.png" alt="Calculator History Button">
+            <img class="calculator__icon calculator__icon--hidden" src="./assets/image/button/calc.png" alt="Calculator Go-Back From History Button">
         </button>
 
-    </div>
+    </div> 
 
     <!-- Footer -->
     <footer class="footer">
 
-        <div class="footer__container">
+        <div class="container container--flex-100vh footer__content">
 
-            <div class="footer__sub-container footer__sub-container--art">
+            <div class="display-flex--column footer__container footer__container--art">
 
             </div>
             
             <img src="./assets/image/logo/ephemeral_dotted.png" alt="Footer image" class="footer__img">
 
-            <div class="footer__sub-container footer__sub-container--links">
+            <div class="display-flex--column footer__container footer__container--links">
                 
                 <hr class="footer__separator">
 
-                <ul class="footer__list">
+                <ul class="footer__list display-flex--row">
                     
                     <li>
-                        <a class="footer__link" href="https://www.instagram.com/iosh.aa/" target="_blank" rel="noopener noreferrer">
+                        <a class="display-flex--centered footer__link" href="https://www.instagram.com/iosh.aa/" target="_blank" rel="noopener noreferrer">
 
                             <svg class="footer__icon footer__icon--instagram" viewBox="0 0 448 512">
 
@@ -189,7 +228,7 @@
                     </li>
 
                     <li>
-                        <a class="footer__link" href="https://github.com/IDJoshy" target="_blank" rel="noopener noreferrer">
+                        <a class="display-flex--centered footer__link" href="https://github.com/IDJoshy" target="_blank" rel="noopener noreferrer">
                             <svg class="footer__icon footer__icon--github" viewBox="0 0 100 100">
                                 <path d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"></path>
                             </svg>
@@ -201,7 +240,7 @@
                     </li>
                     
                     <li>
-                        <a class="footer__link" href="https://www.linkedin.com/in/joshua-auristondo-gonzales-b7a183304/" target="_blank" rel="noopener noreferrer">
+                        <a class="display-flex--centered footer__link" href="https://www.linkedin.com/in/joshua-auristondo-gonzales-b7a183304/" target="_blank" rel="noopener noreferrer">
                             <svg class="footer__icon footer__icon--linkedin" viewBox="0 0 256 256">
                                 <path d="M218.123122,218.127392 L180.191928,218.127392 L180.191928,158.724263 C180.191928,144.559023 179.939053,126.323993 160.463756,126.323993 C140.707926,126.323993 137.685284,141.757585 137.685284,157.692986 L137.685284,218.123441 L99.7540894,218.123441 L99.7540894,95.9665207 L136.168036,95.9665207 L136.168036,112.660562 L136.677736,112.660562 C144.102746,99.9650027 157.908637,92.3824528 172.605689,92.9280076 C211.050535,92.9280076 218.138927,118.216023 218.138927,151.114151 L218.123122,218.127392 Z M56.9550587,79.2685282 C44.7981969,79.2707099 34.9413443,69.4171797 34.9391618,57.260052 C34.93698,45.1029244 44.7902948,35.2458562 56.9471566,35.2436736 C69.1040185,35.2414916 78.9608713,45.0950217 78.963054,57.2521493 C78.9641017,63.090208 76.6459976,68.6895714 72.5186979,72.8184433 C68.3913982,76.9473153 62.7929898,79.26748 56.9550587,79.2685282 M75.9206558,218.127392 L37.94995,218.127392 L37.94995,95.9665207 L75.9206558,95.9665207 L75.9206558,218.127392 Z M237.033403,0.0182577091 L18.8895249,0.0182577091 C8.57959469,-0.0980923971 0.124827038,8.16056231 -0.001,18.4706066 L-0.001,237.524091 C0.120519052,247.839103 8.57460631,256.105934 18.8895249,255.9977 L237.033403,255.9977 C247.368728,256.125818 255.855922,247.859464 255.999,237.524091 L255.999,18.4548016 C255.851624,8.12438979 247.363742,-0.133792868 237.033403,0.000790807055"></path>
                             </svg>
@@ -213,7 +252,7 @@
 
             </div>
 
-            <div class="footer__sub-container footer__sub-container--copyright">
+            <div class="display-flex--column footer__container footer__container--copyright">
                 
                 <strong class="footer__copyright">
                     © Ephemeral Josh 2024

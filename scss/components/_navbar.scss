@@ -1,41 +1,64 @@
 .navbar
 {
-    background-color: rgba($color-olive, 0.9);
-    backdrop-filter: blur(2px);
-
     position: fixed;
-    top: 0;
     z-index: 8;
-    height: $nav-height;
+    top: 0;
     width: 100%;
-
-    transition: top 0.3s;
+    height: fit-content;
+    transition: top 0.3s;   
 
     &__container
     {
-        width: 100%;
+        background-color: rgba($color-olive, 0.9);
+        backdrop-filter: blur(2px);
 
-        display: flex;
-        flex-direction: column;
-    
-        &--upper
+        &--current
         {
-            padding: 1rem 1.5rem 0rem 1.5rem;
-            gap: .25rem;
+            padding: .5rem .75rem 0rem .75rem;
+            width: 100%;
+            height: 30px;
+
+            gap: .15rem;
+
+            &-text
+            {
+                padding: 0px;
+                width: 200px;
+                height: 20px;
+
+                @include display-flex(row, left, center);
+                gap: .5rem;
+
+            }
         }
 
-        &--middle
+        &--navbar
         {
-            padding: .25rem 1.5rem .75rem 1.5rem;
-            align-items: center;
-            flex-direction: row;
-            justify-content: space-between;
+            padding: 0rem 1rem 0rem 1rem;
+            width: 100%;
+            height: 55px;
+            @include display-flex(row, space-between, center);
         }
 
-        &--hidden
+        &--toolbar
         {
-            display: none;
+            background-color: $color-olive;
+            height: 40px;
+
+            padding: 0rem .5rem 0rem .5rem;
+
+            @include display-flex(row, left, center);
+
+            gap: .1rem;
         }
+
+        &--hamburger
+        {
+            background-color: rgba($color-olive, 0.75);
+            backdrop-filter: blur(5px);
+            height: calc(100vh - (85px - 5px));
+        }
+
     }
 
     &__separator
@@ -55,20 +78,21 @@
 
         &--version
         {   
-            font-size: .75rem;
+            font-size: .5rem;
+            margin-left: 5px;
             font-weight: 400;
         }
 
-        &--sup
+        &--mode
         {
             font-size: .75rem;
             font-weight: 400;
         }
 
-        &--name
+        &--message
         {
-            margin-top: 7.5px;
-            font-size: 1.5rem;
+
+            font-size: 1.30rem;
             font-weight: 600;
             text-transform: uppercase;
             text-shadow: -1px 0 $color-pine, 0 1px $color-pine, 1px 0 $color-pine, 0 -1px $color-pine;
@@ -82,6 +106,30 @@
         border: none;
         cursor: pointer;
 
+        &--puller
+        {
+            background-color: $color-olive;
+            border: 1px solid $color-olive;
+            width: 50px;
+            height: 30px;
+            font-size: 1em;
+            color: $color-cream;
+            border-radius: 0px 0px 5px 5px;
+
+            
+            position: absolute;
+            right: 0px;
+            
+            transition: .25s ease-in-out;
+            animation: puller 1s ease-in-out;
+
+            &:hover
+            {
+                background-color: $color-cream;
+                color: $color-olive;
+            }
+        }
+
         &--hamburger
         {
             width: fit-content;
@@ -93,31 +141,28 @@
 
             &:hover
             {
-                .navbar__hamburger-icon
+                .navbar__icon--hamburger
                 {
-                    width: 50px;
-                    height: 50px;
+                    width: 35px;
+                    height: 35px;
+
+                    fill: $color-sandy;
                 }
             }
         }
 
-        &--hidden
-        {
-            display:none;
-        }
     }  
 
-    &__hamburger-icon
+    &__icon
     {
-        width: 45px;
-        height: 45px;
         pointer-events: none;
         transition: .15s ease-in-out;
 
-        &--hidden
+        &--hamburger
         {
-            display: none;
+            fill: antiquewhite;
         }
+
     }
 
     &--hidden
@@ -125,3 +170,13 @@
         display: none;
     }
 }
+
+@keyframes puller
+{
+    0% 
+    { 
+        pointer-events: none;
+        right: -150px; 
+    }
+}
+

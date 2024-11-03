@@ -1,14 +1,7 @@
 .footer
 {
-    &__container
+    &__content
     {
-        width: 100%;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-
         position: relative;
     }
 
@@ -18,15 +11,10 @@
         height: 300px;
     }
 
-    &__sub-container
+    &__container
     {
         width: 100%;
         height: fit-content;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         gap: .75rem;
 
         position: absolute;
@@ -56,20 +44,11 @@
     &__list
     {
         list-style: none;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-
         gap: .75rem;
     }
 
     &__link
-    {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
+    {        
         &:hover
         {
             .footer__icon
