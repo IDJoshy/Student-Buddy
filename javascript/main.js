@@ -384,31 +384,9 @@ CALCULATOR_PANEL_CHANGER.addEventListener("click", () =>
 
 //#endregion
 
-let isCalcHidden = new Boolean(true);
-CALCULATOR_TOOL.style.display = "none";
-
-function RenderTool(type)
-{
-  switch(type)
-  {
-    case "calculator":
-
-    if(isCalcHidden)
-    {
-      CALCULATOR_TOOL.style.display = "unset";
-      isCalcHidden = false;
-    }
-    else
-    {
-      CALCULATOR_TOOL.style.display = "none";
-      isCalcHidden = true;
-    }
-
-    break;
-  }
-}
-
 //Grades
+
+const GRADE_TOOL = document.getElementById("grade-tool");
 
 function GetGrade()
 {
@@ -420,7 +398,7 @@ function GetGrade()
   let pmax = parseInt(document.getElementById("grade-tool-pmax").value);
 
   Toastify({
-    text: `Grade: ${CalculateGrades(nmax, nmin, napr, e, p, pmax)}`,
+    text: `Tu nota es: ${CalculateGrades(nmax, nmin, napr, e, p, pmax)}`,
     duration: 3000,
     gravity: "top",
     position: "right",
@@ -447,5 +425,45 @@ function CalculateGrades(nmax, nmin, napr, e, p, pmax)
 
 }
 
-console.log("tu nota es: " + CalculateGrades(7.0, 1.0, 4.0, 60.0, 100.0, 100.0));
+//Grade Calculator Tool
 
+let isCalcHidden = new Boolean(true);
+let isGradeHidden = new Boolean(true);
+CALCULATOR_TOOL.style.display = "none";
+GRADE_TOOL.style.display = "none";
+
+function RenderTool(type)
+{
+  switch(type)
+  {
+    case "calculator":
+
+    if(isCalcHidden)
+    {
+      CALCULATOR_TOOL.style.display = "unset";
+      isCalcHidden = false;
+    }
+    else
+    {
+      CALCULATOR_TOOL.style.display = "none";
+      isCalcHidden = true;
+    }
+
+    break;
+
+    case "grade":
+
+    if(isGradeHidden)
+    {
+      GRADE_TOOL.style.display = "unset";
+      isGradeHidden = false;
+    }
+    else
+    {
+      GRADE_TOOL.style.display = "none";
+      isGradeHidden = true;
+    }
+
+    break;
+  }
+}
