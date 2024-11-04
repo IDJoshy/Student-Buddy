@@ -1,0 +1,89 @@
+.grade
+{
+    position: fixed;
+    z-index: 4;
+    top: 125px;
+    width: fit-content;
+    height: fit-content;
+
+    &__section
+    {
+        width: 200px;
+        height: 150px;
+        background-color: darken($color-olive, 5%);
+        border: 1px solid $color-pine;
+        border-radius: 0 0 10px 10px;
+        //overflow: hidden;
+        gap: 5px;
+
+        padding: 10px;
+        justify-content: start;
+    }
+
+    &__input
+    {
+        width: 50px;
+        height: 15px;
+
+        border: none;
+        border-radius: 5px;
+        background-color: $color-cream;
+        text-align: center;
+
+        font-size: 11px;
+    }
+
+    &__table
+    {
+        gap: 5px;
+
+        &--left
+        {
+            gap: 3px;
+        }
+    }
+
+    &__text
+    {
+        color: $color-cream;
+        font-size: 12px;
+
+        &--title
+        {
+            font-weight: 600;
+        }
+
+        &--left
+        {
+            align-self: start;
+        }
+    }
+
+    &__button
+    {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+
+        background-color: lightgreen;
+        color: $color-olive;
+        font-size: 10px;
+        padding: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.15s, color 0.2s;
+
+        &:hover
+        {
+            background-color: darken($color-olive, 5%);
+            color: lightgreen;
+        }
+    }
+
+    &--hidden
+    {
+        display: none;
+    }
+}

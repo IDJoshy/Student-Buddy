@@ -408,3 +408,44 @@ function RenderTool(type)
   }
 }
 
+//Grades
+
+function GetGrade()
+{
+  let nmax = parseInt(document.getElementById("grade-tool-nmax").value);
+  let nmin = parseInt(document.getElementById("grade-tool-nmin").value);
+  let napr = parseInt(document.getElementById("grade-tool-napr").value);
+  let e = parseInt(document.getElementById("grade-tool-e").value);
+  let p = parseInt(document.getElementById("grade-tool-p").value);
+  let pmax = parseInt(document.getElementById("grade-tool-pmax").value);
+
+  Toastify({
+    text: `Grade: ${CalculateGrades(nmax, nmin, napr, e, p, pmax)}`,
+    duration: 3000,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)",
+    },
+  }).showToast();
+}
+
+function CalculateGrades(nmax, nmin, napr, e, p, pmax)
+{
+  let e_normal = (e / 100);
+  let e_confirm = (e_normal * pmax);
+
+  if(p < e_confirm)
+  {
+    return (grade = (napr - nmin) * (p / (e_normal * pmax)) + nmin) * 100/100;
+  }
+  else if(p >= e_confirm)
+  {
+    return (grade = (nmax - napr) * ( (p - e_confirm) / (pmax * (1 - e_normal)) ) + napr) * 100/100;
+  }
+
+}
+
+console.log("tu nota es: " + CalculateGrades(7.0, 1.0, 4.0, 60.0, 100.0, 100.0));
+

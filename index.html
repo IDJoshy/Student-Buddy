@@ -18,6 +18,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
 </head>
 <body>
     
@@ -130,9 +133,7 @@
     <!-- Content Panel -->
     <section id="main-panel" class="main display-flex--column">
 
-        <div id="grade-calculator" class="container container--flex-100vh grades">
-
-            
+        <div id="grade-scale" class="container container--flex-100vh">
 
         </div>
 
@@ -184,6 +185,41 @@
         </button>
 
     </div> 
+
+    <div id="grade-tool" class="grade">
+
+        <div class="grade__section grade__section--grade display-flex--column">
+
+            <strong class="grade__text grade__text--header">Calcular Nota</strong>
+
+            <div class="grade__table display-flex--row">
+                <div class="display-flex--column grade__table--left">
+                    <p class="grade__text grade__text--left">Puntaje obtenido:</p>
+                    <p class="grade__text grade__text--left">Puntaje máximo:</p>
+                    <p class="grade__text grade__text--left">Exigencia:</p>
+                    <p class="grade__text grade__text--left">Nota mínima:</p>
+                    <p class="grade__text grade__text--left">Nota máxima:</p>
+                    <p class="grade__text grade__text--left">Nota aprobación:</p>
+                </div>
+                <div class="display-flex--column grade__table--right">
+                    <input class="grade__input" type="number" value="60.0" id="grade-tool-p">
+                    <input class="grade__input" type="number" value="100.0" id="grade-tool-pmax">
+                    <input class="grade__input" type="number" value="60.0" id="grade-tool-e">
+                    <input class="grade__input" type="number" value="1.0" id="grade-tool-nmin">
+                    <input class="grade__input" type="number" value="7.0" id="grade-tool-nmax">
+                    <input class="grade__input" type="number" value="4.0" id="grade-tool-napr">
+                </div>
+            </div>
+
+            <button id="grade-tool-button" class="grade__button" onclick="GetGrade()">Calcular</button>
+
+        </div>
+
+        <div class="grade__section grade__section--history grade--hidden">
+
+        </div>
+
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -266,6 +302,9 @@
 
     </footer>
 
+    <!-- Toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- Script -->
     <script src="./javascript/main.js"></script>
     
 </body>

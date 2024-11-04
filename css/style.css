@@ -542,4 +542,68 @@ span {
   text-align: center;
 }
 
+.grade {
+  position: fixed;
+  z-index: 4;
+  top: 125px;
+  width: fit-content;
+  height: fit-content;
+}
+.grade__section {
+  width: 200px;
+  height: 150px;
+  background-color: #2a3f34;
+  border: 1px solid rgb(40, 54, 24);
+  border-radius: 0 0 10px 10px;
+  gap: 5px;
+  padding: 10px;
+  justify-content: start;
+}
+.grade__input {
+  width: 50px;
+  height: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(254, 250, 224);
+  text-align: center;
+  font-size: 11px;
+}
+.grade__table {
+  gap: 5px;
+}
+.grade__table--left {
+  gap: 3px;
+}
+.grade__text {
+  color: rgb(254, 250, 224);
+  font-size: 12px;
+}
+.grade__text--title {
+  font-weight: 600;
+}
+.grade__text--left {
+  align-self: start;
+}
+.grade__button {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: lightgreen;
+  color: #344E41;
+  font-size: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.15s, color 0.2s;
+}
+.grade__button:hover {
+  background-color: #2a3f34;
+  color: lightgreen;
+}
+.grade--hidden {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
