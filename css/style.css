@@ -495,7 +495,7 @@ span {
   background-color: #344E41;
   color: rgb(254, 250, 224);
 }
-.calculator__changer {
+.calculator__alt-button {
   background-color: rgb(254, 250, 224);
   width: 30px;
   height: 30px;
@@ -503,18 +503,24 @@ span {
   border-radius: 5px;
   cursor: pointer;
   position: absolute;
-  bottom: 25px;
-  right: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.25s;
 }
-.calculator__changer:hover {
+.calculator__alt-button--clean {
+  bottom: 25px;
+  left: 30px;
+}
+.calculator__alt-button--changer {
+  bottom: 25px;
+  right: 30px;
+}
+.calculator__alt-button:hover {
   background-color: #344E41;
   color: rgb(254, 250, 224);
 }
-.calculator__changer:hover .calculator__icon {
+.calculator__alt-button:hover .calculator__icon {
   filter: invert(1);
   width: 20px;
   height: 20px;
@@ -541,6 +547,9 @@ span {
   font-size: 0.75em;
   text-align: center;
 }
+.calculator--hidden {
+  display: none;
+}
 
 .grade {
   position: fixed;
@@ -548,6 +557,7 @@ span {
   top: 125px;
   width: fit-content;
   height: fit-content;
+  transition: top 0.15s ease-in-out;
 }
 .grade__section {
   width: 200px;

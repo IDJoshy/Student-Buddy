@@ -113,7 +113,7 @@
         }
     }
 
-    &__changer
+    &__alt-button
     {
         background-color: $color-cream;
         width: 30px;
@@ -123,13 +123,23 @@
         cursor: pointer;
 
         position: absolute;
-        bottom: 25px;
-        right: 30px;
 
         display: flex;
         justify-content: center;
         align-items: center;
         transition: .25s;
+
+        &--clean
+        {
+            bottom: 25px;
+            left: 30px;
+        }
+
+        &--changer
+        {
+            bottom: 25px;
+            right: 30px;
+        }
 
         &:hover
         {
@@ -176,5 +186,10 @@
             font-size: .75em;
             text-align: center;
         }
+    }
+
+    &--hidden
+    {
+        display: none;
     }
 }

@@ -6,6 +6,8 @@
     width: fit-content;
     height: fit-content;
 
+    transition: top 0.15s ease-in-out;
+
     &__section
     {
         width: 200px;

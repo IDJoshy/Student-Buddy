@@ -52,11 +52,14 @@ function NavbarMenu(dir)
     case "down":
       MENU_PANEL.style.top = "0";
       NAVBAR_PULLER.innerHTML = "↑";
+      GRADE_TOOL.style.top = "125px";
+
       break;
 
     case "up":
       MENU_PANEL.style.top = "-85px";
       NAVBAR_PULLER.innerHTML = "↓";
+      GRADE_TOOL.style.top = "40px";
       break;
   }
 }
@@ -171,6 +174,7 @@ const CALCULATOR_DISPLAY = document.getElementById("calculator-display");
 
 const CALCULATOR_TOOL_PANELS = document.getElementsByClassName("calculator__section");
 const CALCULATOR_PANEL_CHANGER = document.getElementById("calculator-panel-changer");
+const CALCULATOR_HISTORY_CLEANER = document.getElementById("calculator-history-cleaner");
 const CALCULATOR_ICONS = document.getElementsByClassName("calculator__icon");
 
 //Array del historial de resultados
@@ -242,6 +246,8 @@ function AddCalculatorHistory(input)
     console.log("Limite del historial alcanzado, eliminado el calculo mas antiguo");
   }
 
+  if(calculatorHistory.length > 0)  SaveCalculatorHistory();
+
 }
 
 //Actualizar historial
@@ -258,6 +264,8 @@ function UpdateCalculatorHistory()
     <p class="calculator__history-text calculator__history-text--result"> NO DATA </p>
     `;
     CALCULATOR_TOOL_PANELS[1].appendChild(NEW_DIV);
+
+    CALCULATOR_HISTORY_CLEANER.classList.add('calculator--hidden');
   }
   else
   {
@@ -272,9 +280,33 @@ function UpdateCalculatorHistory()
       `;
       CALCULATOR_TOOL_PANELS[1].appendChild(NEW_DIV);
     });
-  }
 
+    CALCULATOR_HISTORY_CLEANER.classList.remove('calculator--hidden');
+  }
 }
+
+function SaveCalculatorHistory()
+{
+  localStorage.setItem('calculatorHistory', JSON.stringify(calculatorHistory));
+}
+
+function LoadCalculatorHistory()
+{
+  const savedHistory = JSON.parse(localStorage.getItem('calculatorHistory'));
+  if(savedHistory)
+  {
+    calculatorHistory = savedHistory;
+  }
+}
+
+function ClearCalculatorHistory()
+{
+  localStorage.removeItem('calculatorHistory');
+  calculatorHistory = [];
+  UpdateCalculatorHistory();
+}
+
+LoadCalculatorHistory();
 
 //Mover Calculadora
 
@@ -379,10 +411,10 @@ CALCULATOR_PANEL_CHANGER.addEventListener("click", () =>
     CALCULATOR_TOOL_PANELS[calculatorPanelIndex].classList.add("calculator__section--hidden");
     CALCULATOR_ICONS[calculatorPanelIndex].classList.add("calculator__icon--hidden");
     calculatorPanelIndex --;
+
+    CALCULATOR_HISTORY_CLEANER.classList.add('calculator--hidden');
   }
 });
-
-//#endregion
 
 //Grades
 
@@ -467,3 +499,5 @@ function RenderTool(type)
     break;
   }
 }
+
+//#endregion
