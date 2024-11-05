@@ -429,16 +429,32 @@ function GetGrade()
   let p = parseInt(document.getElementById("grade-tool-p").value);
   let pmax = parseInt(document.getElementById("grade-tool-pmax").value);
 
-  Toastify({
-    text: `Tu nota es: ${CalculateGrades(nmax, nmin, napr, e, p, pmax)}`,
-    duration: 3000,
-    gravity: "top",
-    position: "right",
-    stopOnFocus: true,
-    style: {
-      background: "linear-gradient(to right, #00b09b, #96c93d)",
-    },
-  }).showToast();
+  if(p > pmax)
+  {
+    Toastify({
+      text: `!Puntaje superior a ${pmax}`,
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #FF0000, #ff8478)",
+      },
+    }).showToast();
+  }
+  else
+  {
+    Toastify({
+      text: `Tu nota es: ${CalculateGrades(nmax, nmin, napr, e, p, pmax)}`,
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+    }).showToast();
+  }
 }
 
 function CalculateGrades(nmax, nmin, napr, e, p, pmax)
@@ -473,6 +489,8 @@ function RenderTool(type)
     if(isCalcHidden)
     {
       CALCULATOR_TOOL.style.display = "unset";
+      CALCULATOR_TOOL.style.top = "125px";
+      CALCULATOR_TOOL.style.left = "0px";
       isCalcHidden = false;
     }
     else
