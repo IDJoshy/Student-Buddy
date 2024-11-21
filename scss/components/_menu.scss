@@ -1,13 +1,21 @@
-.navbar
+.menu
 {
     position: fixed;
     z-index: 8;
     top: 0;
     width: 100%;
     height: fit-content;
-    transition: top 0.3s;   
+    transition: top 0.3s;
 
-    &__container
+    &__separator
+    {
+        background: $color-pine;
+        border: 0;
+        height: 1px;
+        display: block;
+    }
+
+    &__content
     {
         background-color: rgba($color-olive, 0.9);
         backdrop-filter: blur(2px);
@@ -44,11 +52,8 @@
         {
             background-color: $color-olive;
             height: 40px;
-
             padding: 0rem .5rem 0rem .5rem;
-
             @include display-flex(row, left, center);
-
             gap: .1rem;
         }
 
@@ -58,15 +63,6 @@
             backdrop-filter: blur(5px);
             height: calc(100vh - (85px - 5px));
         }
-
-    }
-
-    &__separator
-    {
-        background: $color-pine;
-        border: 0;
-        height: 1px;
-        display: block;
     }
 
     &__text
@@ -141,7 +137,7 @@
 
             &:hover
             {
-                .navbar__icon--hamburger
+                .menu__icon--hamburger
                 {
                     width: 35px;
                     height: 35px;
@@ -150,8 +146,7 @@
                 }
             }
         }
-
-    }  
+    }
 
     &__icon
     {
@@ -179,4 +174,3 @@
         right: -150px; 
     }
 }
-

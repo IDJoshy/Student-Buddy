@@ -1,15 +1,15 @@
-.calculator
+.tool
 {
     position: fixed;
     z-index: 5;
-
     top: 125px;
 
-    &__draggable
+    &__drag-space
     {
         width: 250px;
         height: 25px;
         background-color: darken($color-olive, 5%);
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
         border-radius: 10px 10px 0 0;
         display: flex;
         justify-content: center;
@@ -28,47 +28,45 @@
 
     &__icon
     {
+        position: absolute;
         width: 25px;
         height: 25px;
-
         transition: .25s;
-        position: absolute;
-
         user-select: none;
-
-        &--hidden
-        {
-            display: none;
-        }
     }
 
-    &__section
+    &__panel
     {
         width: 250px;
         height: 350px;
 
         background-color: rgba($color-olive, 0.75);
-        padding: 20px;
+        padding: 5px 15px 10px 15px;
         border-radius: 0 0 10px 10px;
-
+        border: 1px solid $color-pine;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
         align-items: center;
 
-        &--calc
+        &--calculator
         {
             justify-content: center;
+
+            &-history
+            {
+                justify-content: start;
+                padding: 10px 15px 10px 15px;
+                gap: 2px;
+            }
         }
 
-        &--hist
+        &--grade
         {
+            height: 250px;
+            padding: 20px 5px 5px 5px;
             justify-content: start;
-            gap: 2px;
-        }
-
-        &--hidden
-        {
-            display: none;
+            gap: 25px;
         }
     }
 
@@ -79,14 +77,14 @@
         background-color: #222;
         color: white;
         text-align: right;
-        font-size: 24px;
+        font-size: 18px;
         padding: 5px;
         margin-bottom: 10px;
         border: none;
         border-radius: 5px;
     }
 
-    &__buttons
+    &__button-wrapper
     {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -98,64 +96,94 @@
     {
         background-color: $color-cream;
         color: $color-olive;
-        font-size: 18px;
-        padding: 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-align: center;
-        transition: background-color 0.15s, color 0.2s;
-
-        &:hover
-        {
-            background-color: $color-olive;
-            color: $color-cream;
-        }
-    }
-
-    &__alt-button
-    {
-        background-color: $color-cream;
+        position: absolute;
         width: 30px;
         height: 30px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-
-        position: absolute;
-
         display: flex;
         justify-content: center;
         align-items: center;
-        transition: .25s;
+        text-align: center;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
 
-        &--clean
+        transition: background-color 0.15s, color 0.2s;
+
+        &--calculator
         {
-            bottom: 25px;
-            left: 30px;
+            position: unset;
+            width: unset;
+            height: unset;
+            font-size: 18px;
+            padding: 15px;
         }
 
-        &--changer
+        &--panel-changer
         {
             bottom: 25px;
             right: 30px;
         }
 
+        &--history-cleaner
+        {
+            bottom: 25px;
+            left: 30px;
+        }
+
+        &--grade
+        {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+
+            border-radius: 0 0 10px 10px;
+        }
+
         &:hover
         {
             background-color: $color-olive;
             color: $color-cream;
 
-            .calculator__icon
+            .tool__icon
             {
                 filter: invert(1);
                 width: 20px;
                 height: 20px;
             }
         }
+
     }
 
-    &__history-item
+    &__text
+    {
+        color: $color-cream;
+        font-size: 15px;
+
+        &--title
+        {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        &--paragraph
+        {
+            align-self: start;
+        }
+
+        &--result
+        {
+            font-size: 1em;
+            align-self: center;
+        }
+
+        &--date
+        {
+            font-size: .75em;
+            text-align: center;
+        }
+    }
+
+    &__item
     {
         width: 210px;
         height: 50px;
@@ -168,24 +196,33 @@
         flex-direction: column;
         justify-content: center;
         gap: 5px;
-
     }
 
-    &__history-text
+    &__table
     {
-        color: $color-cream;
+        gap: 15px;
+
+        &--left
+        {
+            gap: 8.5px;
+        }
+
+        &--right
+        {
+            gap: 3px;
+        }
+    }
+
+    &__input
+    {
+        width: 65px;
+        height: 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: $color-cream;
         text-align: center;
 
-        &--result
-        {
-            font-size: 1em;
-        }
-
-        &--date
-        {
-            font-size: .75em;
-            text-align: center;
-        }
+        font-size: 12px;
     }
 
     &--hidden

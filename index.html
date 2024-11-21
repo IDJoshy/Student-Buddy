@@ -37,55 +37,29 @@
 
     </section>
 
-    <!-- <section id="login-panel" class="login">
-
-        <div class="login__container">
-
-            <strong class="login__text"> > Login</strong>
-
-            <form class="login__form" id="login-form">
-
-                <div class="login__input-box">
-                    <input class="login__input" type="text" id="login-username" placeholder="Username" autocomplete="name" required>
-                    <br>
-                </div>
-
-                <div class="login__input-box">
-                    <input class="login__input" type="password" id="login-password" placeholder="Password" required>
-                    <br>    
-                </div>
-
-                <button class="login__button" type="submit">Access</button>
-
-            </form>
-
-        </div>
-
-    </section> -->
-
-    <section id="menu-panel" class="navbar">
+    <section id="menu-panel" class="menu">
 
         <div id="navbar-menu">
 
-            <div class="navbar__container navbar__container--current">
+            <div class="menu__content menu__content--current">
 
-                <div class="navbar__container--current-text">
-                    <strong class="navbar__text navbar__text--version"> 01001010 VER 0.1 </strong>
+                <div class="menu__content--current-text">
+                    <strong class="menu__text menu__text--version"> 01001010 VER 0.1 </strong>
                     <span> | </span>
-                    <strong id="mode-header" class="navbar__text navbar__text--mode"> --- Mode </strong>
+                    <strong id="mode-header" class="menu__text menu__text--mode"> --- Mode </strong>
                 </div>
     
-                <hr class="navbar__separator">
+                <hr class="menu__separator">
     
             </div>
     
-            <div class="navbar__container navbar__container--navbar">
+            <div class="menu__content menu__content--navbar">
     
-                <h1 id="mode-message" class="navbar__text navbar__text--message">Write Your <br> Thoughts !</h1>
+                <h1 id="mode-message" class="menu__text menu__text--message">Write Your <br> Thoughts !</h1>
     
-                <button class="navbar__button navbar__button--hamburger" type="button" name="navbar-hamburger" tabindex="0" onclick="HamburgerMenu()";>
+                <button id="hamburger-button" class="menu__button menu__button--hamburger" type="button" tabindex="0">
                     
-                    <svg class="navbar__icon navbar__icon--hamburger" width="30px" height="30px" viewBox="0 0 30 30">
+                    <svg class="menu__icon menu__icon--hamburger" width="30px" height="30px" viewBox="0 0 30 30">
                         <g>
                             <rect height="5" width="30" x="0" y="22.5"/>
                             <rect height="5" width="30" x="0" y="12.5"/>
@@ -93,7 +67,7 @@
                         </g>
                     </svg>
     
-                    <svg class="navbar__icon navbar__icon--hamburger navbar--hidden" width="30px" height="30px" viewBox="0 0 460.775 460.775">
+                    <svg class="menu__icon menu__icon--hamburger menu--hidden" width="30px" height="30px" viewBox="0 0 460.775 460.775">
                         <path d="M285.08,230.397L456.218,59.27c6.076-6.077,6.076-15.911,0-21.986L423.511,4.565c-2.913-2.911-6.866-4.55-10.992-4.55  c-4.127,0-8.08,1.639-10.993,4.55l-171.138,171.14L59.25,4.565c-2.913-2.911-6.866-4.55-10.993-4.55  c-4.126,0-8.08,1.639-10.992,4.55L4.558,37.284c-6.077,6.075-6.077,15.909,0,21.986l171.138,171.128L4.575,401.505  c-6.074,6.077-6.074,15.911,0,21.986l32.709,32.719c2.911,2.911,6.865,4.55,10.992,4.55c4.127,0,8.08-1.639,10.994-4.55  l171.117-171.12l171.118,171.12c2.913,2.911,6.866,4.55,10.993,4.55c4.128,0,8.081-1.639,10.992-4.55l32.709-32.719  c6.074-6.075,6.074-15.909,0-21.986L285.08,230.397z"/>
                     </svg>
     
@@ -104,31 +78,31 @@
         </div>
 
         <div id="toolbar-menu">
-            <hr class="navbar__separator">
-            <div class="navbar__container navbar__container--toolbar">
+            <hr class="menu__separator">
+            <div class="menu__content menu__content--toolbar">
                 
-                <button class="toolbar__button toolbar__button--calculator display-flex--centered" onclick="RenderTool('calculator')">
+                <button id="toolbar-button-calculator" class="toolbar__button toolbar__button--calculator display-flex--centered">
                     <img class="toolbar__icon" src="./assets/image/button/calc.png" alt="Toolbar Calculator">
                 </button>
                 <span> | </span>
 
-                <button class="toolbar__button toolbar__button--calculator display-flex--centered" onclick="RenderTool('grade')">
+                <button id="toolbar-button-grade" class="toolbar__button toolbar__button--calculator display-flex--centered">
                     <img class="toolbar__icon" src="./assets/image/button/grade.png" alt="Toolbar Grade Calculator">
                 </button>
                 
             </div>
-            <hr class="navbar__separator">
+            <hr class="menu__separator">
         </div> 
 
-        <div id="hamburger-menu" class="navbar--hidden">
+        <div id="hamburger-menu" class="menu--hidden">
 
-            <div class="navbar__container navbar__container--hamburger">
-                <hr class="navbar__separator">
+            <div class="menu__content menu__content--hamburger">
+                <hr class="menu__separator">
             </div>
     
         </div>
         
-        <button id="navbar-puller" class="navbar__button navbar__button--puller" onclick="NavbarPuller()">
+        <button id="menu-puller" class="menu__button menu__button--puller">
             ↑
         </button>
     
@@ -144,87 +118,85 @@
     </section>
 
     <!-- Tools -->
+    <div id="calculator-tool" class="tool grab-item">
 
-    <div id="calculator-tool" class="calculator">
-
-        <div id="calculator-tool-draggable" class="calculator__draggable"> 
-            <img class="calculator__image" src="./assets/image/button/dragger.png" alt="Draggable Button">
+        <div class="tool__drag-space grab-space"> 
+            <img class="tool__image" src="./assets/image/button/dragger.png" alt="Draggable Button">
         </div>
         
-        <div class="calculator__section calculator__section--calc">
+        <div class="tool__panel tool__panel--calculator">
 
-            <input type="text" class="calculator__display" id="calculator-display" disabled>
+            <input type="text" class="tool__display" id="calculator-display" disabled>
 
-            <div class="calculator__buttons">
+            <div class="tool__button-wrapper">
 
-                <button class="calculator__button">7</button>
-                <button class="calculator__button">8</button>
-                <button class="calculator__button">9</button>
-                <button class="calculator__button">/</button>
-                <button class="calculator__button">4</button>
-                <button class="calculator__button">5</button>
-                <button class="calculator__button">6</button>
-                <button class="calculator__button">*</button>
-                <button class="calculator__button">1</button>
-                <button class="calculator__button">2</button>
-                <button class="calculator__button">3</button>
-                <button class="calculator__button">-</button>
-                <button class="calculator__button">0</button>
-                <button class="calculator__button">.</button>
-                <button class="calculator__button">=</button>
-                <button class="calculator__button">+</button>
-                <button class="calculator__button">C</button>
+                <button class="calculator-button tool__button tool__button--calculator">7</button>
+                <button class="calculator-button tool__button tool__button--calculator">8</button>
+                <button class="calculator-button tool__button tool__button--calculator">9</button>
+                <button class="calculator-button tool__button tool__button--calculator">/</button>
+                <button class="calculator-button tool__button tool__button--calculator">4</button>
+                <button class="calculator-button tool__button tool__button--calculator">5</button>
+                <button class="calculator-button tool__button tool__button--calculator">6</button>
+                <button class="calculator-button tool__button tool__button--calculator">*</button>
+                <button class="calculator-button tool__button tool__button--calculator">1</button>
+                <button class="calculator-button tool__button tool__button--calculator">2</button>
+                <button class="calculator-button tool__button tool__button--calculator">3</button>
+                <button class="calculator-button tool__button tool__button--calculator">-</button>
+                <button class="calculator-button tool__button tool__button--calculator">0</button>
+                <button class="calculator-button tool__button tool__button--calculator">.</button>
+                <button class="calculator-button tool__button tool__button--calculator">=</button>
+                <button class="calculator-button tool__button tool__button--calculator">+</button>
+                <button class="calculator-button tool__button tool__button--calculator">C</button>
     
             </div>
 
         </div>
 
-        <div class="calculator__section calculator__section--hist calculator__section--hidden">
+        <div class="tool__panel tool__panel--calculator tool__panel--calculator-history tool--hidden">
 
         </div>
 
-        <button id="calculator-panel-changer" class="calculator__alt-button calculator__alt-button--changer">
-            <img class="calculator__icon" src="./assets/image/button/hist.png" alt="Calculator History Button">
-            <img class="calculator__icon calculator__icon--hidden" src="./assets/image/button/calc.png" alt="Calculator Go-Back From History Button">
+        <button id="calculator-panel-changer" class="tool__button tool__button--panel-changer">
+            <img class="tool__icon" src="./assets/image/button/hist.png" alt="Calculator History Button">
+            <img class="tool__icon tool--hidden" src="./assets/image/button/calc.png" alt="Calculator Go-Back From History Button">
         </button>
-
         
-        <button id="calculator-history-cleaner" class="calculator__alt-button calculator__alt-button--clean calculator--hidden" onclick="ClearCalculatorHistory()">
-            <img class="calculator__icon" src="./assets/image/button/erase.png" alt="Calculator History Button">
+        <button id="calculator-history-cleaner" class="tool__button tool__button--history-cleaner tool--hidden">
+            <img class="tool__icon" src="./assets/image/button/erase.png" alt="Calculator History Button">
         </button>
 
     </div> 
 
-    <div id="grade-tool" class="grade">
+    <div id="grade-tool" class="tool grab-item">
+        
+        <div class="tool__drag-space grab-space"> 
+            <img class="tool__image" src="./assets/image/button/dragger.png" alt="Draggable Button">
+        </div>
 
-        <div class="grade__section grade__section--grade display-flex--column">
+        <div class="tool__panel tool__panel--grade display-flex--column">
 
-            <strong class="grade__text grade__text--header">Calcular Nota</strong>
+            <strong class="tool__text tool__text--title">Calcular Nota</strong>
 
-            <div class="grade__table display-flex--row">
-                <div class="display-flex--column grade__table--left">
-                    <p class="grade__text grade__text--left">Puntaje obtenido:</p>
-                    <p class="grade__text grade__text--left">Puntaje máximo:</p>
-                    <p class="grade__text grade__text--left">Exigencia:</p>
-                    <p class="grade__text grade__text--left">Nota mínima:</p>
-                    <p class="grade__text grade__text--left">Nota máxima:</p>
-                    <p class="grade__text grade__text--left">Nota aprobación:</p>
+            <div class="tool__table display-flex--row">
+                <div class="display-flex--column tool__table--left">
+                    <p class="tool__text tool__text--paragraph">Puntaje obtenido:</p>
+                    <p class="tool__text tool__text--paragraph">Puntaje máximo:</p>
+                    <p class="tool__text tool__text--paragraph">Exigencia:</p>
+                    <p class="tool__text tool__text--paragraph">Nota mínima:</p>
+                    <p class="tool__text tool__text--paragraph">Nota máxima:</p>
+                    <p class="tool__text tool__text--paragraph">Nota aprobación:</p>
                 </div>
-                <div class="display-flex--column grade__table--right">
-                    <input class="grade__input" type="number" value="60.0" id="grade-tool-p">
-                    <input class="grade__input" type="number" value="100.0" id="grade-tool-pmax">
-                    <input class="grade__input" type="number" value="60.0" id="grade-tool-e">
-                    <input class="grade__input" type="number" value="1.0" id="grade-tool-nmin">
-                    <input class="grade__input" type="number" value="7.0" id="grade-tool-nmax">
-                    <input class="grade__input" type="number" value="4.0" id="grade-tool-napr">
+                <div class="display-flex--column tool__table--right">
+                    <input class="tool__input" type="number" value="60.0" id="grade-tool-p" min="0">
+                    <input class="tool__input" type="number" value="100.0" id="grade-tool-pmax" min="0">
+                    <input class="tool__input" type="number" value="60.0" id="grade-tool-e" min="0">
+                    <input class="tool__input" type="number" value="1.0" id="grade-tool-nmin" min="0">
+                    <input class="tool__input" type="number" value="7.0" id="grade-tool-nmax" min="0">
+                    <input class="tool__input" type="number" value="4.0" id="grade-tool-napr" min="0">
                 </div>
             </div>
 
-            <button id="grade-tool-button" class="grade__button" onclick="GetGrade()">Calcular</button>
-
-        </div>
-
-        <div class="grade__section grade__section--history grade--hidden">
+            <button id="grade-tool-button" class="tool__button tool__button--grade">Calcular</button>
 
         </div>
 
@@ -313,8 +285,9 @@
 
     <!-- Toastify -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
     <!-- Script -->
-    <script src="./javascript/main.js"></script>
+    <script src="./javascript/main.js" type="module"></script>
     
 </body>
 </html>
