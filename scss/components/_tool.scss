@@ -66,8 +66,21 @@
             height: 250px;
             padding: 20px 5px 5px 5px;
             justify-content: start;
-            gap: 25px;
+            gap: 20px;
         }
+
+        &--weather
+        {
+            height: 250px;
+            padding: 20px 5px 5px 5px;
+            justify-content: start;
+            gap: 15px;
+        }
+    }
+
+    &__wrapper
+    {
+        gap: 15px;
     }
 
     &__display
@@ -132,12 +145,23 @@
 
         &--grade
         {
-            position: absolute;
             bottom: 0px;
             width: 100%;
 
             border-radius: 0 0 10px 10px;
+            border: 1px solid $color-olive;
         }
+
+        &--weather
+        {
+            bottom: 0px;
+            width: 100%;
+
+            border-radius: 0 0 10px 10px;
+            border: 1px solid $color-olive;
+        }
+
+
 
         &:hover
         {
@@ -158,11 +182,13 @@
     {
         color: $color-cream;
         font-size: 15px;
+        align-self: center;
 
         &--title
         {
-            font-size: 18px;
-            font-weight: 600;
+            font-family: Terminus;
+            font-size: 1.25em;
+            font-weight: 500;
         }
 
         &--paragraph
@@ -173,14 +199,24 @@
         &--result
         {
             font-size: 1em;
-            align-self: center;
         }
 
         &--date
         {
             font-size: .75em;
+        }
+
+        &--weather
+        {
+            font-size: .75em;
             text-align: center;
         }
+
+        &--emoji
+        {
+            font-size: 1.5em;
+        }
+
     }
 
     &__item
@@ -223,6 +259,11 @@
         text-align: center;
 
         font-size: 12px;
+
+        &--weather
+        {
+            width: 175px;
+        }
     }
 
     &--hidden

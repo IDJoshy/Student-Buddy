@@ -396,7 +396,16 @@ span {
   height: 250px;
   padding: 20px 5px 5px 5px;
   justify-content: start;
-  gap: 25px;
+  gap: 20px;
+}
+.tool__panel--weather {
+  height: 250px;
+  padding: 20px 5px 5px 5px;
+  justify-content: start;
+  gap: 15px;
+}
+.tool__wrapper {
+  gap: 15px;
 }
 .tool__display {
   width: 100%;
@@ -447,10 +456,16 @@ span {
   left: 30px;
 }
 .tool__button--grade {
-  position: absolute;
   bottom: 0px;
   width: 100%;
   border-radius: 0 0 10px 10px;
+  border: 1px solid #344E41;
+}
+.tool__button--weather {
+  bottom: 0px;
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+  border: 1px solid #344E41;
 }
 .tool__button:hover {
   background-color: #344E41;
@@ -464,21 +479,28 @@ span {
 .tool__text {
   color: rgb(254, 250, 224);
   font-size: 15px;
+  align-self: center;
 }
 .tool__text--title {
-  font-size: 18px;
-  font-weight: 600;
+  font-family: Terminus;
+  font-size: 1.25em;
+  font-weight: 500;
 }
 .tool__text--paragraph {
   align-self: start;
 }
 .tool__text--result {
   font-size: 1em;
-  align-self: center;
 }
 .tool__text--date {
   font-size: 0.75em;
+}
+.tool__text--weather {
+  font-size: 0.75em;
   text-align: center;
+}
+.tool__text--emoji {
+  font-size: 1.5em;
 }
 .tool__item {
   width: 210px;
@@ -508,6 +530,9 @@ span {
   background-color: rgb(254, 250, 224);
   text-align: center;
   font-size: 12px;
+}
+.tool__input--weather {
+  width: 175px;
 }
 .tool--hidden {
   display: none;

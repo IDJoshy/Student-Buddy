@@ -37,9 +37,12 @@ Tools();
 
 const TOOL_CALCULATOR_BUTTON = document.getElementById("toolbar-button-calculator");
 const TOOL_GRADE_BUTTON = document.getElementById("toolbar-button-grade");
+const TOOL_WEATHER_BUTTON = document.getElementById("toolbar-button-weather");
 
 TOOL_CALCULATOR_BUTTON.addEventListener("click", () => RenderTool("calculator"));
 TOOL_GRADE_BUTTON.addEventListener("click", () => RenderTool("grade"));
+TOOL_WEATHER_BUTTON.addEventListener("click", () => RenderTool("weather"));
+
 
 //Grab
 import {AddEvents_Grab} from "./misc/grab.js";

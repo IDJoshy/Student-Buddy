@@ -81,13 +81,18 @@
             <hr class="menu__separator">
             <div class="menu__content menu__content--toolbar">
                 
-                <button id="toolbar-button-calculator" class="toolbar__button toolbar__button--calculator display-flex--centered">
+                <button id="toolbar-button-calculator" class="toolbar__button display-flex--centered">
                     <img class="toolbar__icon" src="./assets/image/button/calc.png" alt="Toolbar Calculator">
                 </button>
                 <span> | </span>
 
-                <button id="toolbar-button-grade" class="toolbar__button toolbar__button--calculator display-flex--centered">
+                <button id="toolbar-button-grade" class="toolbar__button display-flex--centered">
                     <img class="toolbar__icon" src="./assets/image/button/grade.png" alt="Toolbar Grade Calculator">
+                </button>
+                <span> | </span>
+
+                <button id="toolbar-button-weather" class="toolbar__button display-flex--centered">
+                    <img class="toolbar__icon" src="./assets/image/button/weather.png" alt="Toolbar Grade Calculator">
                 </button>
                 
             </div>
@@ -175,16 +180,16 @@
 
         <div class="tool__panel tool__panel--grade display-flex--column">
 
-            <strong class="tool__text tool__text--title">Calcular Nota</strong>
+            <strong class="tool__text tool__text--title">Get-Grade</strong>
 
             <div class="tool__table display-flex--row">
                 <div class="display-flex--column tool__table--left">
-                    <p class="tool__text tool__text--paragraph">Puntaje obtenido:</p>
-                    <p class="tool__text tool__text--paragraph">Puntaje máximo:</p>
-                    <p class="tool__text tool__text--paragraph">Exigencia:</p>
-                    <p class="tool__text tool__text--paragraph">Nota mínima:</p>
-                    <p class="tool__text tool__text--paragraph">Nota máxima:</p>
-                    <p class="tool__text tool__text--paragraph">Nota aprobación:</p>
+                    <p class="tool__text tool__text--paragraph">Points Got:</p>
+                    <p class="tool__text tool__text--paragraph">Points Max:</p>
+                    <p class="tool__text tool__text--paragraph">Percentage:</p>
+                    <p class="tool__text tool__text--paragraph">Min Grade:</p>
+                    <p class="tool__text tool__text--paragraph">Max Grade:</p>
+                    <p class="tool__text tool__text--paragraph">Approval Grade:</p>
                 </div>
                 <div class="display-flex--column tool__table--right">
                     <input class="tool__input" type="number" value="60.0" id="grade-tool-p" min="0">
@@ -196,12 +201,23 @@
                 </div>
             </div>
 
-            <button id="grade-tool-button" class="tool__button tool__button--grade">Calcular</button>
-
         </div>
+
+        <button id="grade-tool-button" class="tool__button tool__button--grade">Calcular</button>
 
     </div>
 
+    <div id="weather-tool" class="tool grab-item">
+
+        <div class="tool__drag-space grab-space"> 
+            <img class="tool__image" src="./assets/image/button/dragger.png" alt="Draggable Button">
+        </div>
+
+        <div id="weather-tool-panel" class="tool__panel tool__panel--weather display-flex--column">
+        
+        </div>
+
+    </div>
     <!-- Footer -->
     <footer class="footer">
 
