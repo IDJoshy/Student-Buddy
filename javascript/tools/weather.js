@@ -88,9 +88,8 @@ function RegEx(input)
 
 export function ConvertUnit(celsius)
 {
-    let fahrenheit = 0
-    let kelvin = 0
-
+    let fahrenheit, kelvin;
+    
     try
     {
         let fahrenheit_temp = (celsius * (9/5)) + 32
